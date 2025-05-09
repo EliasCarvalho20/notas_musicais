@@ -10,6 +10,10 @@ requires-python = ">=3.13,<4.0"
 dependencies = [
 ]
 
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
 [tool.poetry]
 packages = [{include = "notas_musicais", from = "src"}]
 
@@ -18,7 +22,7 @@ pytest = "^8.3.5"
 pytest-cov = "^6.1.1"
 isort = "^6.0.1"
 taskipy = "^1.14.1"
-
+black = "^25.1.0"
 
 [tool.poetry.group.doc.dependencies]
 mkdocs-material = "^9.6.12"
@@ -27,7 +31,15 @@ mkdocstrings-python = "^1.16.10"
 
 [tool.isort]
 profile = "black"
+line_length = 79
 
-[build-system]
-requires = ["poetry-core>=2.0.0,<3.0.0"]
-build-backend = "poetry.core.masonry.api"
+[tool.pytest.ini_options]
+pythonpath = "."
+addopts = "--doctest-modules"
+
+[tool.taskipy.tasks]
+lint = "black . && isort ."
+docs = "mkdocs serve"
+pre_test = "task lint"
+test = "pytest -s -x --cov=notas_musicais -vv"
+post_test = "coverage html"
