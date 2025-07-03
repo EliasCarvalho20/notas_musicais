@@ -15,8 +15,15 @@ markdown_extensions:
 extra_css:
   - stylesheets/extra.css
 
+watch:
+  - notas_musicais
+
 plugins:
   - mkdocstrings:
       handlers:
         python:
           paths: [notas_musicais]
+
+extra:
+  commands:
+    run: notas-musicais
