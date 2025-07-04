@@ -6,7 +6,7 @@ from notas_musicais.escalas import ESCALAS, NOTAS, escala
 
 
 def test_deve_funcionar_com_notas_minusculas():
-    tonica = "c"
+    tonica = "C"
     tonalidade = "maior"
 
     result = escala(tonica, tonalidade)
@@ -25,7 +25,7 @@ def test_deve_retornar_um_erro_dizendo_que_a_nota_nao_existe():
 
 
 def test_deve_retornar_um_erro_dizendo_que_a_escala_não_existe():
-    tonica = "c"
+    tonica = "C"
     tonalidade = "tonalidade"
 
     mensagem_de_erro = (
@@ -63,7 +63,7 @@ def test_deve_retornar_as_notas_corretas(tonica, tonalidade, esperado):
 
 
 def test_deve_retornar_os_sete_graus():
-    tonica = "c"
+    tonica = "C"
     tonalidade = "maior"
     esperado = ["I", "II", "III", "IV", "V", "VI", "VII"]
 
