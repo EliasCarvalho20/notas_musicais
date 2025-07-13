@@ -6,8 +6,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Copiar os arquivos do repositorio
+      - name: Copy repo files
         uses: actions/checkout@v4
 
-      - name: Lista arquivos
-        run: echo $(ls)
+      - name: install python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install Poetry
+        uses: snok/install-poetry@v1
