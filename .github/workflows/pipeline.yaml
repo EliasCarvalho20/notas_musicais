@@ -16,3 +16,9 @@ jobs:
 
       - name: Install Poetry
         uses: snok/install-poetry@v1
+
+      - name: Install dependencies
+        run: poetry install --without doc
+
+      - name: Run test
+        run: poetry run task test
